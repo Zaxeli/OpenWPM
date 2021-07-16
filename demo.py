@@ -7,13 +7,35 @@ from openwpm.config import BrowserParams, ManagerParams
 from openwpm.storage.sql_provider import SQLiteStorageProvider
 from openwpm.task_manager import TaskManager
 
+from explorer import explore, pour_queue, search
+
 # The list of sites that we wish to crawl
-NUM_BROWSERS = 1
-sites = [
-    "http://www.example.com",
-    "http://www.princeton.edu",
-    "http://citp.princeton.edu/",
+NUM_BROWSERS = 5
+# sites = [
+#     "https://www.fingerprintjs.com",
+# ]
+domains=[
+    'https://www.ebay.com/',
+    'https://www.target.com/',
+    'https://www.usbank.com/',
+    'https://www.booking.com/',
+    'https://www.tdameritrade.com/home.html',
+    'https://www.hsn.com/',
+    'https://www.agoda.com/',
+    'https://www.bhphotovideo.com/',
+    'https://www.coinbase.com/',
+    'https://www.neimanmarcus.com/',
+    'https://www.rockstargames.com/',
+    'https://www.checkout.com/',
+    'https://www.westernunion.com/',
+    'https://www.yahoo.com/'
 ]
+
+q = search(domains)
+sites = pour_queue(q, printing=False)
+# print(domains)
+# exit()
+
 
 # Loads the default ManagerParams
 # and NUM_BROWSERS copies of the default BrowserParams
@@ -23,18 +45,24 @@ browser_params = [BrowserParams(display_mode="headless") for _ in range(NUM_BROW
 
 # Update browser configuration (use this for per-browser settings)
 for browser_param in browser_params:
+
     # Record HTTP Requests and Responses
-    browser_param.http_instrument = True
+    # browser_param.http_instrument = True
+
     # Record cookie changes
-    browser_param.cookie_instrument = True
+    # browser_param.cookie_instrument = True
+
     # Record Navigations
-    browser_param.navigation_instrument = True
+    # browser_param.navigation_instrument = True
+
     # Record JS Web API calls
     browser_param.js_instrument = True
+
     # Record the callstack of all WebRequests made
-    browser_param.callstack_instrument = True
+    # browser_param.callstack_instrument = True
+
     # Record DNS resolution
-    browser_param.dns_instrument = True
+    # browser_param.dns_instrument = True
 
 # Update TaskManager configuration (use this for crawl-wide settings)
 manager_params.data_directory = Path("./datadir/")

@@ -9,6 +9,7 @@ Steps to have a custom command run as part of a CommandSequence
 
 """
 import logging
+import time
 
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
@@ -39,5 +40,21 @@ class LinkCountingCommand(BaseCommand):
         extension_socket: ClientSocket,
     ) -> None:
         current_url = webdriver.current_url
-        link_count = len(webdriver.find_elements(By.TAG_NAME, "a"))
-        self.logger.info("There are %d links on %s", link_count, current_url)
+        
+        # webdriver.save_screenshot("datadir/screenshots/{}.png".format(time.time()+21312321))
+        # self.logger.info("SS at %d", time.time())
+        
+        # scripts = webdriver.find_elements(By.TAG_NAME, "script")
+        # links = webdriver.find_elements(By.TAG_NAME, "a")
+
+        # self.logger.info(scripts['src'])
+
+        # script_count = len(scripts)
+        # link_count = len(links)
+        
+        # print("_---> lin", type(links[0].get_attribute('href')))
+        # self.logger.info("There are %d links on %s", link_count, current_url)
+        # self.logger.info("There are %d scripts on %s", script_count, current_url)
+        
+
+
