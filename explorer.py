@@ -12,27 +12,7 @@ import threading
 import queue
 
 
-
-def expleore(domain, depth):
-    if depth <= 0:
-        return {domain}
-
-    urls = set()
-
-    page = requests.get(domain)
-    soup = bs4.BeautifulSoup(page.content, 'html.parser')
-    links = soup.find_all('a')
-
-    queue_ = queue.Queue()
-
-    for link in links:
-        # spwan thread for this:
-        pass
-
-
-
-
-def explore(domain, depth, tld):
+def explore(domain, depth, tld, limit=5):
     """
     Provides a list of all urls as such:
         - provided url
@@ -59,12 +39,11 @@ def explore(domain, depth, tld):
     page = requests.get(domain)
     soup = bs4.BeautifulSoup(page.content, 'html.parser')
     links = soup.find_all('a')
+    links = links[:limit] # Only first 5 links or as specified
 
     # Absolute-ise the relative links
     # with concurrent.futures.ThreadPoolExecutor() as executor:
     for link in links:
-
-
 
         try:
             
