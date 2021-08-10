@@ -11,28 +11,49 @@ from explorer import explore, pour_queue, search
 
 # The list of sites that we wish to crawl
 NUM_BROWSERS = 5
-# sites = [
-#     "https://www.fingerprintjs.com",
-# ]
-domains=[
-    'https://www.ebay.com/',
-    'https://www.target.com/',
-    'https://www.usbank.com/',
-    'https://www.booking.com/',
-    'https://www.tdameritrade.com/home.html',
-    'https://www.hsn.com/',
-    'https://www.agoda.com/',
-    'https://www.bhphotovideo.com/',
-    'https://www.coinbase.com/',
-    'https://www.neimanmarcus.com/',
-    'https://www.rockstargames.com/',
-    'https://www.checkout.com/',
-    'https://www.westernunion.com/',
-    'https://www.yahoo.com/'
+sites = [
+    "https://fingerprintjs.com/",
 ]
+# Home pages
+# sites=[
+#     "https://fingerprintjs.com/",
+#     'https://www.ebay.com/',
+#     'https://www.target.com/',
+#     'https://www.usbank.com/',
+#     'https://www.booking.com/',
+#     'https://www.tdameritrade.com/home.html',
+#     'https://www.hsn.com/',
+#     'https://www.agoda.com/',
+#     'https://www.bhphotovideo.com/',
+#     'https://www.coinbase.com/',
+#     'https://www.neimanmarcus.com/',
+#     'https://www.rockstargames.com/',
+#     'https://www.checkout.com/',
+#     'https://www.westernunion.com/',
+#     'https://www.yahoo.com/'
+# ]
 
-q = search(domains)
-sites = pour_queue(q, printing=False)
+# Internal (login) pages
+# sites = [
+#     "https://signin.ebay.com/ws/eBayISAPI.dll?SignIn",
+#     "https://login.target.com/gsp/static/v1/login/",
+#     "https://onlinebanking.usbank.com/Auth/Login?redirect=internet_banking_logon",
+#     "https://account.booking.com/sign-in?",
+#     "https://auth.tdameritrade.com/auth?response_type=code&client_id=MOBI%40AMER.OAUTHAP&redirect_uri=https%3A%2F%2Fsecure.tdameritrade.com%2FauthCafe",
+#     "https://www.hsn.com/signin",
+#     "https://www.agoda.com/en-gb/account/signin.html?",
+#     "https://www.bhphotovideo.com/bnh/controller/home?O=inc-SearchBar.jsp&A=getpage&Q=Login.jsp&isLoginOnly=Y",
+#     "https://www.coinbase.com/signin",
+#     "https://www.neimanmarcus.com/",
+#     "https://signin.rockstargames.com/signin/user-form?cid=rsg",
+#     "https://hub.checkout.com/login",
+#     "https://www.westernunion.com/us/en/web/user/login", 
+#     "https://login.yahoo.com/"
+
+# ]
+
+# q = search(domains)
+# sites = pour_queue(q, printing=False)
 # print(domains)
 # exit()
 
@@ -47,19 +68,19 @@ browser_params = [BrowserParams(display_mode="headless") for _ in range(NUM_BROW
 for browser_param in browser_params:
 
     # Record HTTP Requests and Responses
-    # browser_param.http_instrument = True
+    browser_param.http_instrument = True
 
     # Record cookie changes
-    # browser_param.cookie_instrument = True
+    browser_param.cookie_instrument = True
 
     # Record Navigations
-    # browser_param.navigation_instrument = True
+    browser_param.navigation_instrument = True
 
     # Record JS Web API calls
     browser_param.js_instrument = True
 
     # Record the callstack of all WebRequests made
-    # browser_param.callstack_instrument = True
+    browser_param.callstack_instrument = True
 
     # Record DNS resolution
     # browser_param.dns_instrument = True

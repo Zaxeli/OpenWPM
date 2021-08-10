@@ -41,11 +41,12 @@ class LinkCountingCommand(BaseCommand):
     ) -> None:
         current_url = webdriver.current_url
         
-        # webdriver.save_screenshot("datadir/screenshots/{}.png".format(time.time()+21312321))
-        # self.logger.info("SS at %d", time.time())
+        webdriver.save_screenshot("datadir/screenshots/{}.png".format(time.time()+21312321))
+        self.logger.info("SS at %d", time.time())
         
         # scripts = webdriver.find_elements(By.TAG_NAME, "script")
         # links = webdriver.find_elements(By.TAG_NAME, "a")
+        # webdriver.find
 
         # self.logger.info(scripts['src'])
 
