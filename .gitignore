@@ -97,6 +97,6 @@ Extension/firefox/src/content.js
 Extension/firefox/src/feature.js
 
 # Data directories
-datadir/*
-datadir_login_pages/*
-datadir_home_pages/*
+datadir/
+datadir_login_pages/
+datadir_home_pages/
