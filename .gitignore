@@ -100,3 +100,5 @@ Extension/firefox/src/feature.js
 datadir/
 datadir_login_pages/
 datadir_home_pages/
+datadir_login_page/
+datadir_home_page/
